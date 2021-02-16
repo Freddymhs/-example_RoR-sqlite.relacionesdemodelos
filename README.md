@@ -25,7 +25,7 @@ tercero : Computer y [Computer_Ups] y Ups
 # guia
 rails g contrller Home index
 while (!termine)
-      rails generate model Computer  marca:string (model => singular con Camelcase)
+      rails generate model Hub_Usb  marca:string (model => singular con Camelcase)  (tabla => hub_usbs )(model => HubUsb) (orm => ????????hub_usb????????)
       rails db:migrate  || rails db:rollback
       rails generate  migration  add_hubusbid_to_peripherals   hub_usb:references  
                                 [nombremigracion_en_PLURALs]  [modelo_id:tipodedato]
