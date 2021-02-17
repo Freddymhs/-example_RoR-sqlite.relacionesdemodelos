@@ -10,21 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_202229) do
-
-  create_table "hub_usbs", force: :cascade do |t| #HubUsb
-    t.string "nropuertos"
-    t.string "marca"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "peripherals", force: :cascade do |t| #Peripherals
-    t.string "nombre"
-    t.string "marca"
-    t.string "inalambrico"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end

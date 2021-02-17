@@ -1,3 +1,5 @@
+https://www.youtube.com/watch?v=DAjfsW4gqGo. Ejemplo de relación en ORM rail console
+
 # README
 
 practica de relaciones en la base de datos usando el orm(active records) de ruby on rails.
@@ -24,19 +26,43 @@ tercero : Computer y [Computer_Ups] y Ups
 
 # guia
 rails g contrller Home index
+
 while (!termine)
       rails generate model Hub_Usb  marca:string (model => singular con Camelcase)  (tabla => hub_usbs )(model => HubUsb) (orm => ????????hub_usb????????)
       rails db:migrate  || rails db:rollback
-      rails generate  migration  add_hubusbid_to_peripherals   hub_usb:references  
+      rails generate migration add_hudusbid_to_peripherals hub_usb:references (a periferico se le agregara un id FK de otro modelo)
                                 [nombremigracion_en_PLURALs]  [modelo_id:tipodedato]
                                    [tabla modificada]           [hacia que tabla]
-                               
-     
-      revisar el campo de la migracion por si necesita datos por default u no es un 1aN o algo mas.
-      CONFIGURAR ASOCIACIONES DE LOS MODELOS => has_many o belongs_to :modelo(singular o plural) 
-       
+      revisar el schema nuevo que va a modificar la tabla con migracion :)
+      configurar asociaciones delos modelos => [has_many][belongs_to][has_one] :modelo(singular o plural) // cmo deshacerlo facil? -_-
+      rails db:migrate  || rails db:rollback
+      Peripheral.new(id: 1, nombre: "s", hub_usb_id: 1)
+
 end
   
+
+
+ rails generate model Peripheral  nombre:string marca:string inalambrico:string
+ rails generate model Hub_Usb  marca:string nropuertos:string 
+ rails db:migrate
+ rails generate migration addIdHubUsbTo_peripherals hub_usb:references  (peripherals tendran 1 hub_usb)
+ #revisar migracion
+ rails db:migrate
+ #revisar asociacion en modelo
+ 
+ 
+
+
+
+
+extra insertar datos en multiples tablas :) (ejemplo 1 a n)
+Peripheral.create({           nombre:"raton",        inalambrico:"nope" ,      hub_usb_id:    })
+
+contenedor = Peripheral.create()
+contenido = HubUsb.create()
+
+contenedor.update(HubUsb: [contenido])
+
 
 
 
