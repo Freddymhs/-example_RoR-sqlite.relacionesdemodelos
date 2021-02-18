@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  marca: MyString
+  pulgadas: MyString
+  so: MyString
+
+two:
+  marca: MyString
+  pulgadas: MyString
+  so: MyString

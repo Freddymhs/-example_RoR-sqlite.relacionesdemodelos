@@ -1,4 +1,5 @@
 https://www.youtube.com/watch?v=DAjfsW4gqGo. Ejemplo de relación en ORM rail console
+las entidades estan mal pero me sirven de practica :)
 
 # README
 
@@ -30,7 +31,8 @@ rails g contrller Home index
 while (!termine)
       #generar modelos en base a las tablas  (model => singular con Camelcase)  (tabla => hub_usbs )(model => HubUsb)(orm=>.hub_usb)
       rails generate model Hub_Usb  atributo:type
-      rails db:migrate  || rails db:rollback
+      rails db:migrate  || rails db:rollback 
+      rails generate migration addIdComputer_To_hub_usbs      computer:references
       rails generate migration addIdHubUsbTo_peripherals      hub_usb:references  (peripheral tendra fk de hub_usb) (usar nombre de las tablas)(plur o singl
                                [nombreMigracion_tabla's]       [campo:tipodedato]
                                    [tabla a modificar]          [que se agregara]
@@ -39,24 +41,15 @@ while (!termine)
 end
       revisar el nuevo SCHEMA y podre probar su relacion funcional si esta bien ASOCIADA su relacion en los modelos correspondientes.
       
-      testeando ORM :
-      p = Peripheral.last() //obtiene el ultimo
-      p.hub_usb             //obtiene el elemento asociado a este
+      testeando en ORM :
+      p = Peripheral.last() //obtiene el ultimo.  
+      p.hub_usb             //obtiene el elemento asociado a este // accede nombre de tabla?
 
-      agrgar campo con update a 2 tablas:
+
+agrgar campo con update a 2 tablas :
 contenedor = Peripheral.create()
 contenido = HubUsb.create()
 contenedor.update(HubUsb: [contenido])
 
 
-
-
-
-
-
-
-
-
-
-
-
+addIdComputerTo_hub_usbs computer:references

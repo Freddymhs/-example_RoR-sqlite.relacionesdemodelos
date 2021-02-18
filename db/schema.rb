@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_17_215704) do
+ActiveRecord::Schema.define(version: 2021_02_18_155406) do
+
+  create_table "computers", force: :cascade do |t|
+    t.string "marca"
+    t.string "pulgadas"
+    t.string "so"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "hub_usbs", force: :cascade do |t|
     t.string "nropuertos"
     t.string "marca"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "computer_id", default: 1, null: false
+    t.index ["computer_id"], name: "index_hub_usbs_on_computer_id"
   end
 
   create_table "peripherals", force: :cascade do |t|
@@ -29,5 +39,6 @@ ActiveRecord::Schema.define(version: 2021_02_17_215704) do
     t.index ["hub_usb_id"], name: "index_peripherals_on_hub_usb_id"
   end
 
+  add_foreign_key "hub_usbs", "computers"
   add_foreign_key "peripherals", "hub_usbs"
 end
