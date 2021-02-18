@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_155406) do
+ActiveRecord::Schema.define(version: 2021_02_18_202817) do
 
   create_table "computers", force: :cascade do |t|
     t.string "marca"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 2021_02_18_155406) do
     t.string "so"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "computers_protectors", id: false, force: :cascade do |t|
+    t.integer "computer_id", null: false
+    t.integer "protector_id", null: false
+    t.index ["computer_id", "protector_id"], name: "index_computers_protectors_on_computer_id_and_protector_id"
+    t.index ["protector_id", "computer_id"], name: "index_computers_protectors_on_protector_id_and_computer_id"
   end
 
   create_table "hub_usbs", force: :cascade do |t|
@@ -37,6 +44,13 @@ ActiveRecord::Schema.define(version: 2021_02_18_155406) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "hub_usb_id", default: 1, null: false
     t.index ["hub_usb_id"], name: "index_peripherals_on_hub_usb_id"
+  end
+
+  create_table "protectors", force: :cascade do |t|
+    t.string "watts"
+    t.string "va"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "hub_usbs", "computers"
